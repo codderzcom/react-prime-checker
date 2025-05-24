@@ -6,16 +6,17 @@ import storageService from "@/services/storage";
 import Filter from "./Filter";
 import type {CheckResult} from "@/types";
 import Pagination from "@/components/Pagination.tsx";
+import {useChecks} from "@/contexts/ChecksContext.tsx";
 
 const PAGE_SIZE = import.meta.env.VITE_PAGE_SIZE || 10;
 
 const History = () => {
   const [searchParams] = useSearchParams();
-  const [checks, setChecks] = useState<CheckResult[]>([]);
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const {checks, setChecks} = useChecks();
 
   const loadData = useCallback(async () => {
     const pageParam = searchParams.get('page');
