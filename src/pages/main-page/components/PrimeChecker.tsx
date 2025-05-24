@@ -67,6 +67,7 @@ const PrimeChecker = () => {
           slotProps={{
             input: {inputMode: 'numeric'}
           }}
+          data-testid="number"
         />
         <Button
           variant="contained"
@@ -80,7 +81,7 @@ const PrimeChecker = () => {
       {error && <Typography color="error">{error}</Typography>}
 
       {result && (
-        <Typography sx={{mt: 2}}>
+        <Typography sx={{mt: 2}} data-testid="result">
           The number {result.number} is {result.isPrime ? 'prime' : 'not prime'}.
           Checked at: {dayjs(result.timestamp).format('DD.MM.YYYY HH:mm:ss')}
         </Typography>

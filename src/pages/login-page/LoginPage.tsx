@@ -34,6 +34,7 @@ const LoginPage = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          data-testid="username"
         />
         <TextField
           size="small"
@@ -44,6 +45,7 @@ const LoginPage = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          data-testid="password"
         />
         {error && <Typography color="error">{error}</Typography>}
         <Button type="submit" variant="contained" sx={{mt: 2}}>
