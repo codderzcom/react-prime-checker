@@ -6,13 +6,11 @@ import {MemoryRouter} from "react-router";
 import {useAuth} from "@/hooks/useAuth.ts";
 import {tester} from "@/utils/tester.ts";
 import dayjs from "dayjs";
-import {initDB} from "@/utils/db.ts";
 
 describe('App', () => {
 
   beforeEach(async () => {
     useAuth().logout();
-    await initDB();
 
     render(
       <MemoryRouter initialEntries={['/']}>
@@ -23,6 +21,7 @@ describe('App', () => {
 
   test('It works', async () => {
     await tester.seed();
+    await tester.wait(2000);
     await tester.login('admin', 'admin');
 
     await tester.checkNumber(10);
@@ -34,6 +33,7 @@ describe('App', () => {
     const from = now.subtract(1, 'second').format('DD.MM.YYYY HH:mm:ss');
     const to = now.add(1, 'second').format('DD.MM.YYYY HH:mm:ss');
     await tester.filterTable(from, to);
+    await tester.wait();
     await tester.verifyTableCount(2);
   });
 });

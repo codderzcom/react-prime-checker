@@ -5,13 +5,14 @@ import {useAuth} from "@/hooks/useAuth.ts";
 
 const Seeder = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const {register} = useAuth()
+  const {register, logout} = useAuth()
   const initialize = async () => {
     setIsLoading(true)
 
     try {
       await register('admin', 'admin');
       await generateDemoChecks();
+      logout()
     } catch (err) {
       console.error('DB initialization failed:', err);
     } finally {

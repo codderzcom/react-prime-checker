@@ -8,8 +8,7 @@ export const generateDemoChecks = async () => {
   const tx = db.transaction(STORE_NAME, 'readwrite');
   const store = tx.objectStore(STORE_NAME);
 
-  const count = await store.count();
-  if (count > 0) return;
+  store.clear()
 
   const demoChecks: CheckResult[] = [];
   const now = new Date();

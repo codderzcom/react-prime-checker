@@ -49,7 +49,7 @@ const History = () => {
     } finally {
       setLoading(false);
     }
-  }, [searchParams]);
+  }, [searchParams, setChecks]);
 
   useEffect(() => {
     loadData();
@@ -68,7 +68,7 @@ const History = () => {
         <>
           <List data-testid='result-table'>
             {checks.map((check) => (
-              <div key={check.id}>
+              <div key={check.timestamp}>
                 <ListItem>
                   <ListItemText
                     primary={`${check.number} is ${check.isPrime ? 'prime' : 'not prime'}`}
