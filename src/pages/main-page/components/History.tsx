@@ -66,7 +66,7 @@ const History = () => {
 
       {!loading && !error && (
         <>
-          <List>
+          <List data-testid='result-table'>
             {checks.map((check) => (
               <div key={check.id}>
                 <ListItem>

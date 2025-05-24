@@ -8,8 +8,12 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     browser: {
-      name: 'chrome',
-    }
+      instances: [
+        {
+            browser: 'chromium',
+        }
+      ],
+    },
   },
   resolve: {
     alias: [
